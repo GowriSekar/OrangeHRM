@@ -8,7 +8,6 @@ import com.orangehrm.PageObjects.LoginPage;
 import com.orangehrm.Utilites.XLUtils;
 public class TestLoginPage extends BaseClass
 {
-	
 	@Test(dataProvider="LoginData")
 	public void loginTest(String username,String password) throws IOException, InterruptedException 
 	{
@@ -17,12 +16,15 @@ public class TestLoginPage extends BaseClass
 		
 		lp.setUserName(username);
 		Thread.sleep(2000);
+		log.info("UserName Entered");
 		
 		lp.setPassword(password);	
 		Thread.sleep(2000);
+		log.info("Password Entered");
 		
 		lp.clickLoginButton();
 		Thread.sleep(2000);
+		log.info("Login Sucessful");
 		
 		String actualWelcomePageTitle=hp.getHomePageTitle();
 		String expectedWelcomePageTitle=readconfig.getWelcomePageTitle();
@@ -31,9 +33,11 @@ public class TestLoginPage extends BaseClass
 		
 		hp.clickWelcomeProfile();
 		Thread.sleep(2000);
+		log.info("Welcome Page Displayed Succesfully");
 		
 		hp.clickLogoutButton();
 		Thread.sleep(2000);
+		log.info("Logged out Successfully");
 	}
 
 	@DataProvider(name="LoginData")
